@@ -1,0 +1,94 @@
+{
+  "@@locale": "es",
+  "appName": "Flutter Starter",
+  "welcomeBack": "Bienvenido",
+  "signInSubtitle": "Inicia sesión para continuar",
+  "email": "Correo",
+  "password": "Contraseña",
+  "signIn": "Iniciar sesión",
+  "demoHint": "Modo demo: usa cualquier correo y una contraseña de 6+ caracteres.",
+  "fieldRequired": "Este campo es obligatorio",
+  "invalidEmail": "Correo inválido",
+  "passwordMin": "Mínimo 6 caracteres",
+  "invalidNumber": "Número inválido",
+  "navDashboard": "Panel",
+  "navDevices": "Dispositivos",
+  "navAlerts": "Alertas",
+  "navSettings": "Ajustes",
+  "logout": "Cerrar sesión",
+  "hello": "Hola, {name} 👋",
+  "@hello": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "totalDevices": "Total de dispositivos",
+  "activeAlerts": "Alertas activas",
+  "liveReadings": "Lecturas en tiempo real",
+  "lastValue": "Último valor",
+  "recentAlerts": "Alertas recientes",
+  "viewAll": "Ver todas",
+  "addDevice": "Agregar dispositivo",
+  "editDevice": "Editar dispositivo",
+  "deviceName": "Nombre",
+  "deviceLocation": "Ubicación",
+  "deviceType": "Tipo",
+  "deviceStatus": "Estado",
+  "deviceThreshold": "Umbral de alerta",
+  "save": "Guardar",
+  "cancel": "Cancelar",
+  "delete": "Eliminar",
+  "deleteTitle": "¿Eliminar dispositivo?",
+  "deleteConfirm": "Se eliminará \"{name}\". Esta acción no se puede deshacer.",
+  "@deleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "saved": "Guardado",
+  "deleted": "Eliminado",
+  "searchHint": "Buscar…",
+  "filterAll": "Todos",
+  "noDevices": "Sin dispositivos",
+  "noDevicesHint": "Agrega uno con el botón +",
+  "statusOnline": "En línea",
+  "statusOffline": "Fuera de línea",
+  "statusWarning": "Advertencia",
+  "typeSensor": "Sensor",
+  "typeGateway": "Gateway",
+  "typeController": "Controlador",
+  "severityInfo": "Info",
+  "severityWarning": "Advertencia",
+  "severityCritical": "Crítica",
+  "acknowledge": "Reconocer",
+  "clearAcknowledged": "Limpiar reconocidas",
+  "noAlerts": "Sin alertas",
+  "settingsAppearance": "Apariencia",
+  "theme": "Tema",
+  "themeLight": "Claro",
+  "themeDark": "Oscuro",
+  "systemDefault": "Sistema",
+  "language": "Idioma",
+  "settingsNotifications": "Notificaciones",
+  "pushNotifications": "Notificaciones push",
+  "pushNotificationsDesc": "Recibe avisos cuando haya alertas",
+  "alertSound": "Sonido de alerta",
+  "settingsMonitoring": "Monitoreo",
+  "refreshInterval": "Intervalo de actualización",
+  "refreshEvery": "Cada {seconds} s",
+  "@refreshEvery": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsAbout": "Acerca de",
+  "version": "Versión",
+  "licenses": "Licencias",
+  "errorGeneric": "Algo salió mal"
+}

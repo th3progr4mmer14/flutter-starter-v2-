@@ -9,11 +9,12 @@ import '../domain/device_repository.dart';
 /// Para una BD real (SQLite/Drift/Isar) o una API, crea otra clase que
 /// implemente DeviceRepository y cambia el provider.
 class LocalDeviceRepository implements DeviceRepository {
-  static const _key = 'devices_v1';
+  static const _key = 'devices_v2';
 
   final SharedPreferences _prefs;
   LocalDeviceRepository(this._prefs);
 
+  // Coordenadas de ejemplo (centro de CDMX). Cámbialas a tu zona.
   static const _seed = [
     Device(
       id: '1',
@@ -22,6 +23,8 @@ class LocalDeviceRepository implements DeviceRepository {
       type: DeviceType.sensor,
       status: DeviceStatus.online,
       threshold: 80,
+      latitude: 19.4350,
+      longitude: -99.1410,
     ),
     Device(
       id: '2',
@@ -30,6 +33,8 @@ class LocalDeviceRepository implements DeviceRepository {
       type: DeviceType.gateway,
       status: DeviceStatus.online,
       threshold: 90,
+      latitude: 19.4290,
+      longitude: -99.1350,
     ),
     Device(
       id: '3',
@@ -38,6 +43,8 @@ class LocalDeviceRepository implements DeviceRepository {
       type: DeviceType.sensor,
       status: DeviceStatus.warning,
       threshold: 70,
+      latitude: 19.4400,
+      longitude: -99.1280,
     ),
     Device(
       id: '4',
@@ -46,6 +53,8 @@ class LocalDeviceRepository implements DeviceRepository {
       type: DeviceType.controller,
       status: DeviceStatus.offline,
       threshold: 60,
+      latitude: 19.4250,
+      longitude: -99.1250,
     ),
   ];
 

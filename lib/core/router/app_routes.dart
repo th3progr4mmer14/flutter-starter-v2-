@@ -10,6 +10,11 @@ class AppRoutes {
   static const deviceNew = '/devices/new';
   static String deviceEdit(String id) => '/devices/$id';
 
+  static const map = '/map';
+  static const geofences = '/map/geofences';
+  static const geofenceNew = '/map/geofences/new';
+  static String geofenceEdit(String id) => '/map/geofences/$id';
+
   static const alerts = '/alerts';
 
   static const settings = '/settings';

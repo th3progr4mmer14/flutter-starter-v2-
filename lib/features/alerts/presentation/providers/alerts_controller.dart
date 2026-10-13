@@ -18,6 +18,13 @@ class AlertsController extends AsyncNotifier<List<AlertItem>> {
     return list;
   }
 
+  /// Agrega una alerta nueva al inicio (la usa, por ejemplo, el monitor de geocercas).
+  Future<void> add(AlertItem alert) async {
+    final updated = [alert, ...(state.value ?? <AlertItem>[])];
+    state = AsyncData(updated);
+    await _repo.saveAll(updated);
+  }
+
   Future<void> acknowledge(String id) async {
     final updated = [
       for (final a in state.value ?? <AlertItem>[])

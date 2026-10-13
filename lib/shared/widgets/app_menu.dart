@@ -27,6 +27,7 @@ class AppMenu extends ConsumerWidget {
     final items = <(String, IconData, String)>[
       (AppRoutes.dashboard, Icons.dashboard_outlined, l.navDashboard),
       (AppRoutes.devices, Icons.devices_other_outlined, l.navDevices),
+      (AppRoutes.map, Icons.map_outlined, l.navMap),
       (AppRoutes.alerts, Icons.notifications_active_outlined, l.navAlerts),
       (AppRoutes.settings, Icons.settings_outlined, l.navSettings),
     ];

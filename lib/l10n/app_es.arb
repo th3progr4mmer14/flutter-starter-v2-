@@ -90,5 +90,56 @@
   "settingsAbout": "Acerca de",
   "version": "Versión",
   "licenses": "Licencias",
-  "errorGeneric": "Algo salió mal"
+  "errorGeneric": "Algo salió mal",
+  "navMap": "Mapa",
+  "noLocatedDevices": "Sin dispositivos con ubicación",
+  "noLocatedDevicesHint": "Agrega latitud y longitud al editar un dispositivo",
+  "deviceLatitude": "Latitud",
+  "deviceLongitude": "Longitud",
+  "invalidCoordinate": "Coordenada inválida",
+  "fitAll": "Ver todos",
+  "centerOnMap": "Centrar",
+  "myLocation": "Mi ubicación",
+  "locationServiceOff": "Activa los servicios de ubicación (GPS)",
+  "locationDenied": "Permiso de ubicación denegado",
+  "locationDeniedForever": "Permiso denegado. Actívalo en los ajustes del sistema",
+  "distanceFromYou": "A {distance} de ti",
+  "@distanceFromYou": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  },
+  "showTrails": "Mostrar recorridos",
+  "clearTrails": "Limpiar recorridos",
+  "geofences": "Geocercas",
+  "addGeofence": "Agregar geocerca",
+  "editGeofence": "Editar geocerca",
+  "geofenceName": "Nombre de la geocerca",
+  "geofenceRadius": "Radio (metros)",
+  "geofenceTrigger": "Avisar cuando",
+  "triggerExit": "Salga de la zona",
+  "triggerEnter": "Entre a la zona",
+  "geofenceDevice": "Dispositivo",
+  "allDevices": "Todos los dispositivos",
+  "noGeofences": "Sin geocercas",
+  "noGeofencesHint": "Crea una con el botón + o manteniendo presionado el mapa",
+  "geofenceDeleteTitle": "¿Eliminar geocerca?",
+  "geofenceExitAlert": "Salió de la geocerca \"{name}\"",
+  "@geofenceExitAlert": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "geofenceEnterAlert": "Entró a la geocerca \"{name}\"",
+  "@geofenceEnterAlert": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -124,7 +124,7 @@ class DashboardScreen extends ConsumerWidget {
                         data: (v) => LiveLineChart(values: v),
                         loading: () =>
                             const Center(child: CircularProgressIndicator()),
-                        error: (_, __) => Center(child: Text(l.errorGeneric)),
+                        error: (_, _) => Center(child: Text(l.errorGeneric)),
                       ),
                     ),
                   ],

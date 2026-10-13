@@ -10,6 +10,10 @@ class Device {
   final DeviceStatus status;
   final double threshold;
 
+  /// Coordenadas opcionales (para la sección de mapa).
+  final double? latitude;
+  final double? longitude;
+
   const Device({
     required this.id,
     required this.name,
@@ -17,7 +21,11 @@ class Device {
     required this.type,
     required this.status,
     required this.threshold,
+    this.latitude,
+    this.longitude,
   });
+
+  bool get hasLocation => latitude != null && longitude != null;
 
   Device copyWith({
     String? name,
@@ -25,6 +33,8 @@ class Device {
     DeviceType? type,
     DeviceStatus? status,
     double? threshold,
+    double? latitude,
+    double? longitude,
   }) {
     return Device(
       id: id,
@@ -33,6 +43,8 @@ class Device {
       type: type ?? this.type,
       status: status ?? this.status,
       threshold: threshold ?? this.threshold,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
     );
   }
 
@@ -49,6 +61,8 @@ class Device {
           orElse: () => DeviceStatus.offline,
         ),
         threshold: (json['threshold'] as num?)?.toDouble() ?? 80,
+        latitude: (json['latitude'] as num?)?.toDouble(),
+        longitude: (json['longitude'] as num?)?.toDouble(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -58,5 +72,7 @@ class Device {
         'type': type.name,
         'status': status.name,
         'threshold': threshold,
+        'latitude': latitude,
+        'longitude': longitude,
       };
 }

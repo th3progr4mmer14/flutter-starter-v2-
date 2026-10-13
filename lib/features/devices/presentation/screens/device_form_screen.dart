@@ -26,6 +26,8 @@ class _DeviceFormScreenState extends ConsumerState<DeviceFormScreen> {
   late final TextEditingController _name;
   late final TextEditingController _location;
   late final TextEditingController _threshold;
+  late final TextEditingController _lat;
+  late final TextEditingController _lng;
   late DeviceType _type;
   late DeviceStatus _status;
   Device? _existing;
@@ -43,6 +45,8 @@ class _DeviceFormScreenState extends ConsumerState<DeviceFormScreen> {
     _location = TextEditingController(text: _existing?.location ?? '');
     _threshold =
         TextEditingController(text: (_existing?.threshold ?? 80).toString());
+    _lat = TextEditingController(text: _existing?.latitude?.toString() ?? '');
+    _lng = TextEditingController(text: _existing?.longitude?.toString() ?? '');
     _type = _existing?.type ?? DeviceType.sensor;
     _status = _existing?.status ?? DeviceStatus.online;
   }
@@ -52,12 +56,25 @@ class _DeviceFormScreenState extends ConsumerState<DeviceFormScreen> {
     _name.dispose();
     _location.dispose();
     _threshold.dispose();
+    _lat.dispose();
+    _lng.dispose();
     super.dispose();
+  }
+
+  double? _parseCoord(String s) {
+    final t = s.trim();
+    if (t.isEmpty) return null;
+    return double.tryParse(t.replaceAll(',', '.'));
   }
 
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _saving = true);
+
+    // La ubicación solo se guarda si hay latitud Y longitud.
+    final lat = _parseCoord(_lat.text);
+    final lng = _parseCoord(_lng.text);
+    final hasLocation = lat != null && lng != null;
 
     final device = Device(
       id: _existing?.id ?? DateTime.now().microsecondsSinceEpoch.toString(),
@@ -66,6 +83,8 @@ class _DeviceFormScreenState extends ConsumerState<DeviceFormScreen> {
       type: _type,
       status: _status,
       threshold: double.parse(_threshold.text.trim().replaceAll(',', '.')),
+      latitude: hasLocation ? lat : null,
+      longitude: hasLocation ? lng : null,
     );
 
     await ref.read(devicesControllerProvider.notifier).save(device);
@@ -91,6 +110,8 @@ class _DeviceFormScreenState extends ConsumerState<DeviceFormScreen> {
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
+    const coordKeyboard =
+        TextInputType.numberWithOptions(decimal: true, signed: true);
 
     return Scaffold(
       appBar: AppBar(
@@ -152,6 +173,31 @@ class _DeviceFormScreenState extends ConsumerState<DeviceFormScreen> {
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   validator: Validators.number(context),
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: AppTextField(
+                        controller: _lat,
+                        label: l.deviceLatitude,
+                        icon: Icons.my_location_outlined,
+                        keyboardType: coordKeyboard,
+                        validator: Validators.coordinate(context, max: 90),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: AppTextField(
+                        controller: _lng,
+                        label: l.deviceLongitude,
+                        icon: Icons.explore_outlined,
+                        keyboardType: coordKeyboard,
+                        validator: Validators.coordinate(context, max: 180),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 24),
                 PrimaryButton(

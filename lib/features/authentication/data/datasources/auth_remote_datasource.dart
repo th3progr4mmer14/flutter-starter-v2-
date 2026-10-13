@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../../core/errors/failures.dart';
 
 /// Ajusta los endpoints al backend.
 class AuthRemoteDataSource {

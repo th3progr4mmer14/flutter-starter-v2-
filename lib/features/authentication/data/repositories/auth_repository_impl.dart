@@ -1,8 +1,8 @@
-import '../../../core/errors/failures.dart';
-import '../../../core/storage/token_storage.dart';
-import '../domain/app_user.dart';
-import '../domain/auth_repository.dart';
-import 'auth_remote_datasource.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../../core/storage/token_storage.dart';
+import '../../domain/app_user.dart';
+import '../../domain/auth_repository.dart';
+import '../datasources/auth_remote_datasource.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource _remote;

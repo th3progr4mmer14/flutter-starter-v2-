@@ -76,7 +76,7 @@ class _DevicesScreenState extends ConsumerState<DevicesScreen> {
               child: devices.when(
                 loading: () =>
                     const Center(child: CircularProgressIndicator()),
-                error: (_, __) => EmptyState(
+                error: (_, _) => EmptyState(
                     icon: Icons.error_outline, title: l.errorGeneric),
                 data: (list) {
                   final filtered = list.where((d) {

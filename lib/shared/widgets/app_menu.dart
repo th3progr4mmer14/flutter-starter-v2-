@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/config/app_modules.dart';
 import '../../core/router/app_routes.dart';
 import '../../features/authentication/presentation/providers/auth_controller.dart';
 import '../../l10n/l10n_x.dart';
 
 /// Menú principal: se usa dentro del Drawer (móvil) o fijo a la izquierda (ancho).
+/// Solo muestra los módulos activos en core/config/app_modules.dart.
 class AppMenu extends ConsumerWidget {
   final String currentRoute;
   final bool closeOnTap;
@@ -25,10 +27,19 @@ class AppMenu extends ConsumerWidget {
     final name = user?.name ?? '';
 
     final items = <(String, IconData, String)>[
-      (AppRoutes.dashboard, Icons.dashboard_outlined, l.navDashboard),
-      (AppRoutes.devices, Icons.devices_other_outlined, l.navDevices),
-      (AppRoutes.map, Icons.map_outlined, l.navMap),
-      (AppRoutes.alerts, Icons.notifications_active_outlined, l.navAlerts),
+      if (AppModules.dashboard)
+        (AppRoutes.dashboard, Icons.dashboard_outlined, l.navDashboard),
+      if (AppModules.devices)
+        (AppRoutes.devices, Icons.devices_other_outlined, l.navDevices),
+      if (AppModules.map) (AppRoutes.map, Icons.map_outlined, l.navMap),
+      if (AppModules.alerts)
+        (AppRoutes.alerts, Icons.notifications_active_outlined, l.navAlerts),
+      if (AppModules.reports)
+        (AppRoutes.reports, Icons.description_outlined, l.navReports),
+      if (AppModules.inventario)
+        (AppRoutes.inventario, Icons.folder_outlined, l.navInventario),
+      if (AppModules.workOrder)
+        (AppRoutes.workOrder, Icons.build_outlined, l.navWorkOrder),
       (AppRoutes.settings, Icons.settings_outlined, l.navSettings),
     ];
 

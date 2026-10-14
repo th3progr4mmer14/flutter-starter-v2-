@@ -141,5 +141,71 @@
         "type": "String"
       }
     }
-  }
+  },
+  "navReports": "Reportes",
+  "reportDevices": "Reporte de dispositivos",
+  "reportAlerts": "Reporte de alertas",
+  "reportDevicesDesc": "Lista de dispositivos con tipo, estado y ubicación",
+  "reportAlertsDesc": "Historial de alertas con severidad y estado",
+  "exportPdf": "Exportar PDF",
+  "exportCsv": "Exportar CSV",
+  "onlyActiveAlerts": "Solo alertas activas",
+  "columnDate": "Fecha",
+  "columnAlert": "Alerta",
+  "columnSeverity": "Severidad",
+  "columnAcknowledged": "Reconocida",
+  "yesLabel": "Sí",
+  "noLabel": "No",
+  "recordsCount": "{count} registros",
+  "@recordsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pageOf": "Página {page} de {pages}",
+  "@pageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "reportGenerated": "Generado el {date}",
+  "@reportGenerated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "reportSaved": "Guardado: {path}",
+  "@reportSaved": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "reportError": "No se pudo guardar el archivo",
+  "navInventario": "Inventario",
+  "inventarioAdd": "Agregar",
+  "inventarioEdit": "Editar",
+  "inventarioName": "Nombre",
+  "inventarioNotes": "Notas",
+  "inventarioEmpty": "Sin registros",
+  "inventarioEmptyHint": "Agrega uno con el botón +",
+  "inventarioDeleteTitle": "¿Eliminar registro?",
+  "navWorkOrder": "Órdenes de trabajo",
+  "workOrderAdd": "Agregar",
+  "workOrderEdit": "Editar",
+  "workOrderName": "Nombre",
+  "workOrderNotes": "Notas",
+  "workOrderEmpty": "Sin registros",
+  "workOrderEmptyHint": "Agrega uno con el botón +",
+  "workOrderDeleteTitle": "¿Eliminar registro?"
 }

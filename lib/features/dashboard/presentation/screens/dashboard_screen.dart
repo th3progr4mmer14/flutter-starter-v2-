@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/config/app_modules.dart';
 import '../../../../core/router/app_routes.dart';
 import '../../../../l10n/l10n_x.dart';
 import '../../../../shared/constants/app_sizes.dart';
@@ -17,6 +18,8 @@ import '../../../devices/presentation/providers/devices_controller.dart';
 import '../providers/live_metrics_provider.dart';
 import '../widgets/live_line_chart.dart';
 
+/// Muestra solo lo que corresponde a los módulos activos:
+/// KPIs de dispositivos (devices), KPI y lista de alertas (alerts).
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
 
@@ -56,42 +59,45 @@ class DashboardScreen extends ConsumerWidget {
                 spacing: AppSizes.md,
                 runSpacing: AppSizes.md,
                 children: [
-                  SizedBox(
-                    width: w,
-                    child: KpiCard(
-                      icon: Icons.devices_other_outlined,
-                      label: l.totalDevices,
-                      value: '${devices.length}',
-                      color: theme.colorScheme.primary,
+                  if (AppModules.devices) ...[
+                    SizedBox(
+                      width: w,
+                      child: KpiCard(
+                        icon: Icons.devices_other_outlined,
+                        label: l.totalDevices,
+                        value: '${devices.length}',
+                        color: theme.colorScheme.primary,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: w,
-                    child: KpiCard(
-                      icon: Icons.check_circle_outline,
-                      label: l.statusOnline,
-                      value: '$online',
-                      color: Colors.green,
+                    SizedBox(
+                      width: w,
+                      child: KpiCard(
+                        icon: Icons.check_circle_outline,
+                        label: l.statusOnline,
+                        value: '$online',
+                        color: Colors.green,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: w,
-                    child: KpiCard(
-                      icon: Icons.portable_wifi_off,
-                      label: l.statusOffline,
-                      value: '$offline',
-                      color: Colors.grey,
+                    SizedBox(
+                      width: w,
+                      child: KpiCard(
+                        icon: Icons.portable_wifi_off,
+                        label: l.statusOffline,
+                        value: '$offline',
+                        color: Colors.grey,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: w,
-                    child: KpiCard(
-                      icon: Icons.notifications_active_outlined,
-                      label: l.activeAlerts,
-                      value: '${activeAlerts.length}',
-                      color: Colors.red,
+                  ],
+                  if (AppModules.alerts)
+                    SizedBox(
+                      width: w,
+                      child: KpiCard(
+                        icon: Icons.notifications_active_outlined,
+                        label: l.activeAlerts,
+                        value: '${activeAlerts.length}',
+                        color: Colors.red,
+                      ),
                     ),
-                  ),
                 ],
               );
             }),
@@ -131,37 +137,40 @@ class DashboardScreen extends ConsumerWidget {
                 ),
               ),
             ),
-            const SizedBox(height: AppSizes.lg),
 
             // ---- Alertas recientes ----
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: AppSizes.sm),
-                child: Column(
-                  children: [
-                    ListTile(
-                      title: Text(l.recentAlerts,
-                          style: theme.textTheme.titleMedium),
-                      trailing: TextButton(
-                        onPressed: () => context.go(AppRoutes.alerts),
-                        child: Text(l.viewAll),
-                      ),
-                    ),
-                    if (activeAlerts.isEmpty)
-                      Padding(
-                        padding: const EdgeInsets.all(AppSizes.md),
-                        child: Text(l.noAlerts),
-                      ),
-                    for (final a in activeAlerts.take(3))
+            if (AppModules.alerts) ...[
+              const SizedBox(height: AppSizes.lg),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: AppSizes.sm),
+                  child: Column(
+                    children: [
                       ListTile(
-                        leading: Icon(a.severity.icon, color: a.severity.color),
-                        title: Text(a.title),
-                        subtitle: Text(a.deviceName),
+                        title: Text(l.recentAlerts,
+                            style: theme.textTheme.titleMedium),
+                        trailing: TextButton(
+                          onPressed: () => context.go(AppRoutes.alerts),
+                          child: Text(l.viewAll),
+                        ),
                       ),
-                  ],
+                      if (activeAlerts.isEmpty)
+                        Padding(
+                          padding: const EdgeInsets.all(AppSizes.md),
+                          child: Text(l.noAlerts),
+                        ),
+                      for (final a in activeAlerts.take(3))
+                        ListTile(
+                          leading:
+                              Icon(a.severity.icon, color: a.severity.color),
+                          title: Text(a.title),
+                          subtitle: Text(a.deviceName),
+                        ),
+                    ],
+                  ),
                 ),
               ),
-            ),
+            ],
           ],
         ),
       ),

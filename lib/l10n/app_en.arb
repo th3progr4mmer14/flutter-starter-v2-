@@ -134,5 +134,18 @@
   "workOrderNotes": "Notes",
   "workOrderEmpty": "No records",
   "workOrderEmptyHint": "Add one with the + button",
-  "workOrderDeleteTitle": "Delete record?"
+  "workOrderDeleteTitle": "Delete record?",
+  "errNetwork": "No internet connection",
+  "errTimeout": "The request timed out",
+  "errUnauthorized": "Your session expired. Please sign in again",
+  "errForbidden": "You do not have permission to do this",
+  "errNotFound": "Resource not found",
+  "errValidation": "Please check the submitted data",
+  "errServer": "Server error. Try again later",
+  "errUnknown": "Unexpected error",
+  "retry": "Retry",
+  "offlineBanner": "Offline. Data may be out of date",
+  "noResults": "No results",
+  "loadMore": "Load more",
+  "navApiDemo": "API demo"
 }

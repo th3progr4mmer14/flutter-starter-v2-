@@ -29,6 +29,15 @@ class Validators {
     };
   }
 
+  /// Entero obligatorio (sin decimales).
+  static FormFieldValidator<String> integer(BuildContext context) {
+    final l = context.l10n;
+    return (v) {
+      if (v == null || v.trim().isEmpty) return l.fieldRequired;
+      return int.tryParse(v.trim()) == null ? l.invalidNumber : null;
+    };
+  }
+
   static FormFieldValidator<String> positiveNumber(BuildContext context) {
     final l = context.l10n;
     return (v) {

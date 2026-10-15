@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'app_menu.dart';
+import 'connection_banner.dart';
 
-/// Scaffold para pantallas principales: Drawer en móvil, menú fijo en pantallas anchas.
+/// Scaffold para pantallas principales: Drawer en móvil, menú fijo en pantallas
+/// anchas, y franja de "sin conexión" arriba del contenido.
 class AppScaffold extends StatelessWidget {
   final String title;
   final String currentRoute;
@@ -33,7 +35,12 @@ class AppScaffold extends StatelessWidget {
               child: AppMenu(currentRoute: currentRoute, closeOnTap: true),
             ),
       floatingActionButton: floatingActionButton,
-      body: body,
+      body: Column(
+        children: [
+          const ConnectionBanner(),
+          Expanded(child: body),
+        ],
+      ),
     );
 
     if (!wide) return content;

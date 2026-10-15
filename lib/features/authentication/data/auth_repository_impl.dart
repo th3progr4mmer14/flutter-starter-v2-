@@ -1,3 +1,4 @@
+import '../../../core/config/api_config.dart';
 import '../../../core/errors/failures.dart';
 import '../../../core/storage/token_storage.dart';
 import '../domain/app_user.dart';
@@ -13,7 +14,10 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<AppUser> login(String email, String password) async {
     final data = await _remote.login(email, password);
-    await _tokens.save(data['token'] as String);
+    await _tokens.saveTokens(
+      access: data[ApiConfig.accessTokenKey] as String,
+      refresh: data[ApiConfig.refreshTokenKey] as String?,
+    );
     return AppUser.fromJson(Map<String, dynamic>.from(data['user'] as Map));
   }
 

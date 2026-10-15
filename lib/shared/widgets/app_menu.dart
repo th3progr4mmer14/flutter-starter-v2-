@@ -40,6 +40,8 @@ class AppMenu extends ConsumerWidget {
         (AppRoutes.inventario, Icons.folder_outlined, l.navInventario),
       if (AppModules.workOrder)
         (AppRoutes.workOrder, Icons.build_outlined, l.navWorkOrder),
+      if (AppModules.apiDemo)
+        (AppRoutes.apiDemo, Icons.cloud_outlined, l.navApiDemo),
       (AppRoutes.settings, Icons.settings_outlined, l.navSettings),
     ];
 

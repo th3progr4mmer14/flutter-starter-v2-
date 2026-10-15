@@ -23,6 +23,7 @@ import '../../features/inventario/presentation/screens/inventario_form_screen.da
 import '../../features/inventario/presentation/screens/inventario_screen.dart';
 import '../../features/work_order/presentation/screens/work_order_form_screen.dart';
 import '../../features/work_order/presentation/screens/work_order_screen.dart';
+import '../../features/api_demo/presentation/screens/api_demo_screen.dart';
 import '../config/app_modules.dart';
 import 'app_routes.dart';
 
@@ -157,6 +158,11 @@ final routerProvider = Provider<GoRouter>((ref) {
                   WorkOrderFormScreen(itemId: state.pathParameters['id']),
             ),
           ],
+        ),
+      if (AppModules.apiDemo)
+        GoRoute(
+          path: AppRoutes.apiDemo,
+          builder: (_, _) => const ApiDemoScreen(),
         ),
       // ---- Núcleo: ajustes ----
       GoRoute(

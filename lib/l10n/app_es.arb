@@ -207,5 +207,18 @@
   "workOrderNotes": "Notas",
   "workOrderEmpty": "Sin registros",
   "workOrderEmptyHint": "Agrega uno con el botón +",
-  "workOrderDeleteTitle": "¿Eliminar registro?"
+  "workOrderDeleteTitle": "¿Eliminar registro?",
+  "errNetwork": "Sin conexión a internet",
+  "errTimeout": "La solicitud tardó demasiado",
+  "errUnauthorized": "Tu sesión expiró. Inicia sesión de nuevo",
+  "errForbidden": "No tienes permiso para hacer esto",
+  "errNotFound": "No se encontró el recurso",
+  "errValidation": "Revisa los datos enviados",
+  "errServer": "Error del servidor. Intenta más tarde",
+  "errUnknown": "Ocurrió un error inesperado",
+  "retry": "Reintentar",
+  "offlineBanner": "Sin conexión. Los datos pueden estar desactualizados",
+  "noResults": "Sin resultados",
+  "loadMore": "Cargar más",
+  "navApiDemo": "API demo"
 }

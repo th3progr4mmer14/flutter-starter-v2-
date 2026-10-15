@@ -18,6 +18,7 @@ class AppModules {
   static const bool enableAlerts = true;
   static const bool enableMap = true; // necesita Dispositivos
   static const bool enableReports = true; // necesita Dispositivos y/o Alertas
+  static const bool enableApiDemo = false; // ejemplo que consume una API publica
   static const bool enableWorkOrder = true;
   static const bool enableInventario = true;
 
@@ -27,6 +28,7 @@ class AppModules {
   static const bool alerts = enableAlerts;
   static const bool map = enableMap && enableDevices;
   static const bool reports = enableReports && (enableDevices || enableAlerts);
+  static const bool apiDemo = enableApiDemo;
   static const bool workOrder = enableWorkOrder;
   static const bool inventario = enableInventario;
 }

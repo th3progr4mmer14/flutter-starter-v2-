@@ -26,6 +26,8 @@ class AppRoutes {
   static const workOrderNew = '/work_order/new';
   static String workOrderEdit(String id) => '/work_order/$id';
 
+  static const apiDemo = '/api_demo';
+
   static const settings = '/settings';
   static const settingsAppearance = '/settings/appearance';
   static const settingsNotifications = '/settings/notifications';

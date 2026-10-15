@@ -19,6 +19,6 @@ class ReportSaver {
       fileExtension: ext,
       mimeType: mimeType,
     );
-    return '$result';
+    return result.toString();
   }
 }

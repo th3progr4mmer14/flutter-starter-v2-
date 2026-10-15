@@ -2,7 +2,8 @@
 ///
 ///   flutter run                                   -> auth local/mock (sin API)
 ///   flutter run --dart-define=USE_MOCK_AUTH=false \
-///               --dart-define=API_URL=https://mi-api.com
+///               --dart-define=API_URL=https://mi-api.com \
+///               --dart-define=API_KEY=xxxx        (solo si la API usa API key)
 class Env {
   Env._();
 
@@ -10,6 +11,9 @@ class Env {
     'API_URL',
     defaultValue: 'https://api.example.com',
   );
+
+  /// API key opcional. Si está vacía no se envía.
+  static const String apiKey = String.fromEnvironment('API_KEY');
 
   static const String flavor = String.fromEnvironment(
     'FLAVOR',

@@ -38,7 +38,7 @@ CAMEL="$(python3 -c "import sys;p=sys.argv[1];print(p[:1].lower()+p[1:])" "$PASC
 [ -n "$LABEL_EN" ] || LABEL_EN="$LABEL_ES"
 
 grep -q "static const $CAMEL = " lib/core/router/app_routes.dart && die "Ya existe una ruta llamada '$CAMEL' en app_routes.dart"
-grep -q "enable$PASCAL" lib/core/config/app_modules.dart && die "Ya existe el módulo enable$PASCAL en app_modules.dart"
+grep -qE "enable${PASCAL}([^A-Za-z0-9_]|$)" lib/core/config/app_modules.dart && die "Ya existe el módulo enable$PASCAL en app_modules.dart"
 
 echo "Creando feature '$NAME' ($PASCAL)..."
 mkdir -p "$DIR/domain" "$DIR/data" "$DIR/presentation/providers" "$DIR/presentation/screens"
